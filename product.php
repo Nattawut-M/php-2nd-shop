@@ -22,7 +22,7 @@
 
   <div class="container"><h1>product page</h1></div>
   
-  <div class="container d-flex flex-row flex-wrap justify-content-between">
+  <div class="container d-flex flex-row flex-wrap justify-content-start">
   <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
 
     <div class="card my-3 mx-2 d-inline-block ">
