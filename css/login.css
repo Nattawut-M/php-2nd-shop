@@ -1,0 +1,31 @@
+body {
+  background-color: #ffc6a0;
+  /* background-color: red; */
+}
+
+.content {
+  margin: 12% 8% 8% 8%;
+  padding: 4rem 1rem 4rem 1rem;
+
+  background-color: #fff;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-control {
+  display: block;
+
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  border-color: #dc7633 !important;
+  border-style: solid !important;
+  border-width: 0 0 1px 0 !important;
+  border-radius: 0;
+  
+  padding: 0.5rem !important;
+
+}

@@ -1,0 +1,24 @@
+body {
+   background-color: #ffc6a0;
+}
+.container {
+   height: auto;
+
+   position: relative;
+   top: 3rem;
+
+   background-color: #fff;
+   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-row {
+   margin-bottom: 0.5rem;
+}
+.orange-light {
+   background-color: #ff954f; 
+   color: #fff;
+}
+
+.orange-light:hover {
+   background-color: #dc7633;
+}
