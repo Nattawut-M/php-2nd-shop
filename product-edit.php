@@ -16,7 +16,7 @@
          $query = $db->prepare("SELECT * FROM 2ndshop.tb_product WHERE pd_id = :id");
          $query->execute([':id' => $update_id]);
          $row = $query->fetch(PDO::FETCH_ASSOC);
-         extract($row);
+         // extract($row);
       } catch (PDOException $err) {
          echo $err->getMessage();
       }
@@ -62,7 +62,7 @@
                pd_detail = :pd_detail,
                pd_price = :pd_price,
                pd_img = :pd_img
-               WHERE user_id = :user_id"
+               WHERE pd_id = :pd_id"
             );
 
             $result = $query_update->execute([
@@ -70,7 +70,8 @@
                ':pd_detail' => $detail,
                ':pd_price' => $price,
                ':pd_img' => $img_name,
-               ':user_id' => $_SESSION['login_id']
+               ':pd_id' => $row['pd_id']
+               // ':user_id' => $_SESSION['login_id']
             ]); // if success return True, else Failure return False
 
             if ($result) {
