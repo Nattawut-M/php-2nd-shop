@@ -27,7 +27,7 @@
               $_SESSION['login_role'] = $row['role_id'];
 
               $msg = '<div class="alert alert-success text-center">Login Successfully</div>';
-              header("refresh:2; url=index.php");
+              header("refresh:1; url=index.php");
           } else {
             $msg = '<div class="alert alert-danger text-center">username wrong</div>';
           }
