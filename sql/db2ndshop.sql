@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_product` (
-`pd_id` int(10) NOT NULL,
+`pd_id` int(100) NOT NULL,
 `pd_name` varchar(255) NOT NULL,
 `pd_detail` varchar(255) NOT NULL,
 `pd_price` int(100) NOT NULL,
