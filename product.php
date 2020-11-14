@@ -39,6 +39,7 @@
           <?php 
             echo "รายละเอียด : ".$row['pd_detail']. "<br>";
             echo "ผู้ขาย : ".$row['user_id']. "<br>";
+            echo "เวลาลงขาย : ".$row['pd_timestamp']. "<br>";
             echo "ราคา : ".$row['pd_price']. "<br>";
           ?>
         </p>
@@ -50,7 +51,7 @@
     </div>
 
   <?php } ?> 
-  
+
   </div>
 </body>
 </html>
