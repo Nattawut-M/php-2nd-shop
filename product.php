@@ -20,7 +20,7 @@
 <!-- navbar -->
   <?php require_once('views/nav.php') ?>
 
-  <div class="container"><h1>product page</h1></div>
+  <div class="container"><h1>Product Page</h1></div>
   
   <div class="container d-flex flex-row flex-wrap justify-content-start">
   <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -38,7 +38,7 @@
           <br>
           <?php 
             echo "รายละเอียด : ".$row['pd_detail']. "<br>";
-            echo "ผู้ขาย : ".$row['user_id']. "<br>";
+            // echo "ผู้ขาย : ".$row['user_id']. "<br>";
             echo "เวลาลงขาย : ".$row['pd_timestamp']. "<br>";
             echo "ราคา : ".$row['pd_price']. "<br>";
           ?>
