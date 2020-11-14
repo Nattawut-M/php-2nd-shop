@@ -12,7 +12,7 @@
     $email = $_POST['inputEmail'];
 
     if ($password1 != $password2) {
-      $msg[] = '<div class="alert alert-danger text-center">รหัสผ่านไม่ตรงกัน</div>';
+      $msg = '<div class="alert alert-danger text-center">รหัสผ่านไม่ตรงกัน</div>';
     } else {
 
       try {
@@ -106,11 +106,12 @@
         </form> <!-- form -->
 
         <p class="text-center">
-          ถ้าหากต้องการ 
-          <a href="login.php">เข้าสู่ระบบ</a>
+          คลิกที่นี่ถ้าหากต้องการ 
+          <a href="login.php">เข้าสู่ระบบ</a> 
         </p>
         <?php if (isset($msg)) {
           echo $msg;
+          header("refresh:1;login.php");
         } ?>
       </div> <!-- col-register -->
     </div> <!-- row (img+register) -->
