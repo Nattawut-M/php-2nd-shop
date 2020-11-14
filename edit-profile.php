@@ -23,8 +23,7 @@
       $edit_password1 = $_POST['inputPassword1'];
       $edit_password2 = $_POST['inputPassword2'];
       $edit_email = $_POST['inputEmail'];
-      // print_r($_POST);
-      // print_r($_SESSION);
+      
       if ($edit_password1 != $edit_password2) {
          $msg = '<div class="alert alert-danger text-center">รหัสผ่านไม่ตรงกัน</div>';
       } else {

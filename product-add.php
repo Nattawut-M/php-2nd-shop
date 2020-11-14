@@ -27,8 +27,9 @@ session_start();
          $path = "upload/".$img_name; // file destination / new img name
          
          if (!file_exists($path)) {
+            
             move_uploaded_file($img_tmp, 'upload/'.$img_name);
-            /* move_uploaded_file($img_tmp, 'upload/'.$img_name); */
+
          } else {
             $msg = "files is already exists";
             echo $msg;

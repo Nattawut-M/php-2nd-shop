@@ -4,10 +4,6 @@
   require_once("views/bootstrap4.php");
   session_start();
 
-  // $query = $db->prepare("SELECT * FROM 2ndshop.tb_product");
-  // $getImg = $query->execute();
-  // $getImg = $query->fetch(PDO::FETCH_ASSOC);
-
   $query = $db->query("SELECT * FROM 2ndshop.tb_product ORDER BY pd_id DESC");
 
 ?>
@@ -54,8 +50,7 @@
     </div>
 
   <?php } ?> 
-    <!-- <br>
-    <a class="btn btn-danger" href="logout.php">logout</a> -->
+  
   </div>
 </body>
 </html>
