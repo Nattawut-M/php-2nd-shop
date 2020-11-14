@@ -51,8 +51,8 @@ session_start();
             ]);
 
             if ($result) {
-               $msg = "ลงขายสินค้าสำเร็จ";
-               header("refresh:1; product-add.php");
+               $query_msg = "ลงขายสินค้าสำเร็จ";
+               header("refresh:1; myproduct.php");
             }
          }
 
@@ -88,9 +88,14 @@ session_start();
 
       <!-- col input -->
          <div class="col-6 pr-5" id="col-register">
-            <?php if (isset($msg)) {
-                  echo '<div class="alert alert-success">'. $msg .'</div>';
-            } ?>
+            <?php 
+               if (isset($msg)) {
+                     echo '<div class="alert alert-danger text-center">'. $msg .'</div>';
+               } 
+               if (isset($query_msg)) {
+                  echo '<div class="alert alert-success text-center">'. $query_msg .'</div>';
+               }
+            ?>
             <h2 class="mb-4">คุณต้องการลงประกาศขายอะไร?</h2>
 
          <!-- form -->
@@ -111,9 +116,9 @@ session_start();
                   <div class="col-6">
                      <label for="typeProduct">ประเภทของสินค้า</label>
                      <select class="custom-select" name="typeProduct" id="typeProduct">
-                        <option value="1">ยานพาหนะ (Vehicle)</option>
-                        <option value="2">สมาร์ทโฟน (Smartphone)</option>
-                        <option value="3">โน้ตบุ๊ค (Notebook)</option>
+                        <option value="1">Vehicle (ยานพาหนะ)</option>
+                        <option value="2">Smartphone (สมาร์ทโฟน)</option>
+                        <option value="3">Notebook (โน้ตบุ๊ค)</option>
                      </select>
                   </div>
                </div>
