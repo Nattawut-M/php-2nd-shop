@@ -15,9 +15,9 @@
       $row = $query->fetch(PDO::FETCH_ASSOC); /* return array associative, index by column name in database to access data */
       
       if ($query->rowCount() > 0) {
-          if ($username == $row['user_username'] && $password == $row['user_password']) {
+          if ($username == $row['user_username'] && $password == $row['user_password']) { // ถ้า username และ password ตรงก็จะทำงาน
             // set session
-              $_SESSION['login'] = true; 
+              $_SESSION['login'] = true; // session สำหรับยืนยันการเข้าสู่ระบบ
               $_SESSION['login_id'] = $row['user_id'];
               $_SESSION['login_fname'] = $row['user_fname'];
               $_SESSION['login_lname'] = $row['user_lname'];
