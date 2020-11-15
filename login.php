@@ -15,8 +15,10 @@
       $row = $query->fetch(PDO::FETCH_ASSOC); /* return array associative, index by column name in database to access data */
       
       if ($query->rowCount() > 0) {
+
           if ($username == $row['user_username'] && $password == $row['user_password']) { // ถ้า username และ password ตรงก็จะทำงาน
-            // set session
+            
+              // create SESSION and assign value from database
               $_SESSION['login'] = true; // session สำหรับยืนยันการเข้าสู่ระบบ
               $_SESSION['login_id'] = $row['user_id'];
               $_SESSION['login_fname'] = $row['user_fname'];
@@ -27,10 +29,16 @@
               $_SESSION['login_role'] = $row['role_id'];
 
               $msg = '<div class="alert alert-success text-center">Login Successfully</div>';
-              header("refresh:1; url=index.php");
-          } else {
-            $msg = '<div class="alert alert-danger text-center">username wrong</div>';
-          }
+              if ($_SESSION['login_role'] == '1') {
+                header("refresh:1; url=index.php");
+              } else if ($_SESSION['login_role'] == '2') {
+                header("refresh:1;admin-panel.php");
+              } else {
+                $msg = '<div class="alert alert-danger text-center">username or something error</div>';
+                echo $msg;
+              }
+          } 
+
       } else {
           $msg = '<div class="alert alert-danger text-center">username or password wrong</div>';
       }
