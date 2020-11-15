@@ -29,10 +29,12 @@
               $_SESSION['login_role'] = $row['role_id'];
 
               $msg = '<div class="alert alert-success text-center">Login Successfully</div>';
+
+              // redirect to different page
               if ($_SESSION['login_role'] == '1') {
                 header("refresh:1; url=index.php");
               } else if ($_SESSION['login_role'] == '2') {
-                header("refresh:1;admin-panel.php");
+                header("refresh:1;admin.php");
               } else {
                 $msg = '<div class="alert alert-danger text-center">username or something error</div>';
                 echo $msg;
