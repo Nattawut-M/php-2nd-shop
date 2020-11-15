@@ -1,7 +1,8 @@
 <?php
    require_once('model/connection.php');
    require_once('views/bootstrap4.php');
-
+   session_start();
+   
    if (isset($_REQUEST['delete_id'])) {
       try {
 
