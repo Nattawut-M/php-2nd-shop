@@ -2,3 +2,7 @@ img#img-product {
     max-width: 8rem;
     max-height: fit-content;
 }
+
+.bg-orange {
+    background-color: #dc7633 !important;
+}
