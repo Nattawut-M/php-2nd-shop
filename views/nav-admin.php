@@ -5,10 +5,12 @@
 				<img src="./images/logo-admin.png" width="50" height="50" class="d-inline-block mr-2" alt="" loading="lazy">
 				2nd Shop
 			</a>
-	
+			
+			<a href="index.php" class="btn btn-light">หน้า index</a>
+
 			<ul class="nav navbar-nav ">
 				<li class="nav-item">
-					<a class="nav-link" href="admin.php">หน้าแรก (Home)</a>
+					<a class="nav-link" href="admin.php">หน้าแอดมิน (Home)</a>
 				</li>
 	
 				<li class="nav-item">
