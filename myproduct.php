@@ -25,7 +25,7 @@
             <tr  class="">
                <th scope="col">ชื่อสินค้า</th>
                <th scope="col">รายละเอียด</th>
-               <th scope="col">เวลาลงขาย</th>
+               <th scope="col">ราคา</th>
                <th scope="col">รูปภาพ</th>
                <th scope="col">จัดการ</th>
             </tr>
