@@ -62,28 +62,13 @@
 						<!-- เมื่อมีการ login (เช็คได้จาก $_SESSION['login'])  -->
 						<div class="btn-group">
 							<a href="profile.php" class="btn btn-primary pr-2"> <!-- display username -->
-							สวัสดี <b>ADMIN</b> &nbsp; <u><?php echo $_SESSION['login_username'] ?></u>
+								สวัสดี <b>ADMIN</b> &nbsp; <u><?php echo $_SESSION['login_username'] ?></u>
 							</a>
 							<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="sr-only">Toggle Dropdown</span>
+								<span class="sr-only">Toggle Dropdown</span>
 							</button> 
 							<div class="dropdown-menu">
-								<a 
-									class="dropdown-item" href="product-add.php" 
-									onMouseOver="this.style.backgroundColor='#0275d8'" 
-									onMouseOut="this.style.backgroundColor='#f7f7f7'">
-									<!-- javascript Over = hover, Out = not hover -->
-									ลงประกาศขาย 
-								</a>
-								<a 
-									class="dropdown-item" href="edit-profile.php" 
-									onMouseOver="this.style.backgroundColor='#f0ad4e'" 
-									onMouseOut="this.style.backgroundColor='#f7f7f7'">
-									<!-- javascript Over = hover, Out = not hover -->
-									แก้ไขโปรไฟล์ 
-								</a>
-								<a 
-									class="dropdown-item" href="logout.php" 
+								<a  class="dropdown-item" href="logout.php" 
 									onMouseOver="this.style.backgroundColor='#d9534f'" 
 									onMouseOut="this.style.backgroundColor='#f7f7f7'">
 									<!-- javascript Over = hover, Out = not hover -->
@@ -137,20 +122,20 @@
 							<!-- all -->
 							<p>ทั้งหมด 2 ประเภท : <?php echo "10" ?></p>
 							<div class="progress progress-all">
-								<div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป <?php echo "7" ?></div>
-								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">ผู้ดูแลระบบ <?php echo "3" ?></div>
+								<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป : <?php echo "7" ?></div>
+								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">ผู้ดูแลระบบ : <?php echo "3" ?></div>
 							</div>
 							
 							<!-- notebook -->
 							<p>ประเภท &nbsp : &nbsp ผู้ใช้ทั่วไป <?php echo "7" ?></p>
 							<div class="progress">
-								<div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป <?php echo "7" ?></div>
+								<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
 							</div>
 
 							<!-- notebook -->
 							<p>ประเภท &nbsp : &nbsp ผู้ดูแลระบบ <?php echo "3" ?></p>
 							<div class="progress">
-								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">ผู้ดูแลระบบ <?php echo "3" ?></div>
+								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ดูแลระบบ" ?></div>
 							</div>
 
 						<!-- button -->
