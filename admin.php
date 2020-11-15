@@ -29,6 +29,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="css/all.css" rel="stylesheet">
+	<!-- <link href="css/fontawesome.css" rel="stylesheet"> -->
+	<!-- <link href="css/brands.css" rel="stylesheet">
+	<link href="css/solid.css" rel="stylesheet"> -->
+
 	<title>Admin</title>
 </head>
 <body>
@@ -100,9 +106,44 @@
 
 	<section class="container my-3">
 		<!-- display fullname and username of admin -->
-		<h1>ยินดีต้อนรับ ADMIN : <?php echo "<mark>#{$_SESSION['login_id']} {$_SESSION['login_fname']} {$_SESSION['login_lname']} ({$_SESSION['login_username']})</mark>"; ?> </h1>
+		<h1>
+			ยินดีต้อนรับ ADMIN : <?php echo "<mark>#{$_SESSION['login_id']} {$_SESSION['login_fname']} {$_SESSION['login_lname']} ({$_SESSION['login_username']})</mark>"; ?> 
+		</h1>
 
-		
+		<hr>
+
+		<div class="row d-flex flex-row justify-content-around d-flex align-items-center">
+			<div class="col">
+				<div class="card">
+					<h5 class="card-header text-white bg-dark">
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people-fill mt-2 mx-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+						</svg>
+						จำนวนผู้ใช้ทั้งหมด (Users)
+					</h5>
+					<div class="card-body">
+						<h5 class="card-title">ผู้ใช้มี 2 ประเภท</h5>
+							<p class="card-text px-2">
+								<strong>ผู้ใช้งานทั่วไป : </strong> xx คน
+							</p>
+							<p class="card-text px-2">
+								<strong>ผู้ดูแลระบบ : </strong> xx คน
+							</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<h5 class="card-header text-white bg-dark">จำนวนสินค้าทั้งหมด (Product)</h5>
+					<div class="card-body">
+						<h5 class="card-title">Special title treatment</h5>
+						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 </body>
 </html>
