@@ -100,7 +100,7 @@
 
 	<section class="container my-3">
 		<!-- display fullname and username of admin -->
-		<h1>ยินดีต้อนรับ ADMIN : <?php echo "<mark> {$_SESSION['login_fname']} {$_SESSION['login_lname']} ({$_SESSION['login_username']})</mark>"; ?> </h1>
+		<h1>ยินดีต้อนรับ ADMIN : <?php echo "<mark>#{$_SESSION['login_id']} {$_SESSION['login_fname']} {$_SESSION['login_lname']} ({$_SESSION['login_username']})</mark>"; ?> </h1>
 
 		
 	</section>
