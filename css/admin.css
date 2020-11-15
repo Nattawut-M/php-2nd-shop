@@ -1,0 +1,19 @@
+p {
+    margin: 0.25rem;
+}
+
+
+div.progress {
+    margin-bottom: 1.5rem ;
+
+    height: 1.5rem;
+}
+
+
+div.progress-all {
+    height: 1.2rem;
+}
+
+/* div.progress-bar {
+    height: 1.5rem;
+} */
