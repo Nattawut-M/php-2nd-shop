@@ -63,7 +63,7 @@
 
         <?php } else { ?>
             <!-- เมื่อไม่ได้มีการ login (เช็คได้จาก $_SESSION['login']) -->
-            <a class="btn btn-outline-light mx-0" href="login.php">เข้าสู่ระบบ (Login)</a>
+            <a class="btn btn-outline-light mx-0" href="login.php">เข้าสู่ระบบ</a>
         <?php } ?>
 
       </li>
