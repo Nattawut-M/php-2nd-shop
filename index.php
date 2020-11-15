@@ -19,9 +19,9 @@
 <body>
 <!-- navbar -->
 <?php require_once('views/nav.php') ?>
-
+<?php echo $_SESSION['login_role'] ?> 
 <!-- search product -->
-  <div class="container-fluid px-4 mb-4">
+  <div class="container px-4 mb-4">
     <form action="product.php" method="GET"> <!-- search addressbar -->
       <div class="input-group">
         <input type="text" class="form-control form-control-lg" id="input-search" name="inputSearch" placeholder="ค้นหาสินค้า . . . . " aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -40,9 +40,9 @@
   
 
 <!-- section -->
-  <section id="section-main" class="container-fluid px-4"> <!-- section-container -->
+  <section id="section-main" class="container px-4"> <!-- section-container -->
     <div class="row px-3"> <!-- row -->
-      <div class="list-group col-2"> <!-- list-group col-2 -->
+      <div class="list-group col-3"> <!-- list-group col-2 -->
         <a href="product.php" class="list-group-item list-group-item-action" id="list-head"> 
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-collection-fill mx-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7z"/>
@@ -71,8 +71,8 @@
         </a>
       </div>
       
-      <div class="col-10 px-4"> <!-- col-10 -->
-        <div id="carouselExampleCaptions" class="carousel slide w-75 h-75m-0" data-ride="carousel"> <!-- carousel | banner slide -->
+      <div class="col px-1"> <!-- col-10 -->
+        <div id="carouselExampleCaptions" class="carousel slide w-100 h-75 m-0" data-ride="carousel"> <!-- carousel | banner slide -->
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -104,6 +104,8 @@
         </div> <!-- end-carousel -->
       </div> <!-- end flex -->
     </div>
+
+    
   </section> <!-- end-section-container -->
 </body>
 </html>
