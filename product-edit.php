@@ -31,27 +31,23 @@
          $detail = $_REQUEST['inputDetail'];
          $type = $_REQUEST['typeProduct'];
 
-         $img_name =  $_SESSION['login_id'] ."_"  .$_SESSION['login_username'] ."__" .$_FILES['inputImg']['name'];
+         $img_name =  $row['pd_img']; // ให้ค่าเริ่มต้นเป็นรูปเดิม
          $img_type = $_FILES['inputImg']['type'];
          $img_size = $_FILES['inputImg']['size'];
          $img_tmp = $_FILES['inputImg']['tmp_name']; // inintial file stored
 
          $path = "upload/".$img_name; // file destination / new img name
          $directory ="upload/"; // old directory
-         
-         if ($img_name) { // ถ้ามีการเลือกรูป
 
-            if (!file_exists($path)) {
-               unlink($directory.$row['pd_img']); // remove previous file in directory (old file)
-               move_uploaded_file($img_tmp, 'upload/'.$img_name); // insert new file instead
+         // ถ้ามีการเลือกรูป
+         if (isset($img_name)) { 
 
-            } else {
-               $msg = "files is already exists or Something (from Line: 36-38)";
-               echo $msg;
+            if (file_exists($path)) {
+               move_uploaded_file($img_tmp, 'upload/'.$img_name);
             }
-
-         } else {
-            $img_name = $row['pd_img']; // ถ้าไม่ได้เลือกรูปใหม่ ให้ใช้รูปเดิม
+         // ถ้าไม่ได้เลือกรูปใหม่ ให้ใช้รูปเดิม
+         } else { 
+            $img_name = $row['pd_img']; 
          }
 
          if (!isset($msg)) { // ถ้าไม่มีข้อความ = ไม่มี error
@@ -65,22 +61,22 @@
                WHERE pd_id = :pd_id"
             );
 
+            // if success return True, else Failure return False to $result
             $result = $query_update->execute([
                ':pd_name' => $name,
                ':pd_detail' => $detail,
                ':pd_price' => $price,
                ':pd_img' => $img_name,
                ':pd_id' => $row['pd_id']
-               // ':user_id' => $_SESSION['login_id']
-            ]); // if success return True, else Failure return False
+            ]); 
 
             if ($result) {
                $updateMsg = '<div class="alert alert-success">อัพเดทสำเร็จ</div>';
-               echo $updateMsg;
+               // echo $updateMsg;
                header("refresh:1;myproduct.php");
             } else {
                $updateMsg = '<div class="alert alert-danger">มีปัญหา</div>';
-               echo $updateMsg;
+               // echo $updateMsg;
             }
          }
 
@@ -116,9 +112,15 @@
 
       <!-- col input -->
          <div class="col-6 pr-5" id="col-register">
-            <?php if (isset($msg)) {
+            <?php 
+               if (isset($msg)) {
                   echo '<div class="alert alert-danger">'. $msg .'</div>';
-            } ?>
+               } 
+            
+               if (isset($updateMsg)) {
+                  echo $updateMsg;
+               }
+            ?>
             <h2 class="mb-4">คุณต้องการลงประกาศขายอะไร?</h2>
 
          <!-- form -->
@@ -139,9 +141,21 @@
                   <div class="col-6">
                      <label for="typeProduct">ประเภทของสินค้า</label>
                      <select class="custom-select" name="typeProduct" id="typeProduct">
-                        <option value="1">Vehicle (ยานพาหนะ)</option>
-                        <option value="2">Smartphone (สมาร์ทโฟน)</option>
-                        <option value="3">Notebook (โน้ตบุ๊ค)</option>
+
+                        <?php if ($row['type_id'] == '1') : ?>
+                           <option value="1" selected>Vehicle (ยานพาหนะ)</option>
+                           <option value="2" >Smartphone (สมาร์ทโฟน)</option>
+                           <option value="3" >Notebook (โน้ตบุ๊ค)</option>
+                        <?php elseif ($row['type_id'] == '2') : ?>
+                           <option value="1" >Vehicle (ยานพาหนะ)</option>
+                           <option value="2" selected>Smartphone (สมาร์ทโฟน)</option>
+                           <option value="3" >Notebook (โน้ตบุ๊ค)</option>
+                        <?php elseif ($row['type_id'] == '3') : ?>
+                           <option value="1" >Vehicle (ยานพาหนะ)</option>
+                           <option value="2" >Smartphone (สมาร์ทโฟน)</option>
+                           <option value="3" selected>Notebook (โน้ตบุ๊ค)</option>
+                        <?php endif ?>
+                           
                      </select>
                   </div>
                </div>
@@ -149,8 +163,8 @@
             <!-- รูปสินค้า -->
                <div class="form-row mt-4 mb-3">
                   <div class="col">
-                     <div class="custom-file">
-                        <label for="" class="mr-5">เลือกรูปสินค้า</label>
+                     <div class="custom-file mb-3">
+                        <label for="" class="mr-5">เลือกรูปสินค้า *ข้ามขั้นตอนนี้ หากไม่ต้องการเปลี่ยนรูปสินค้า*</label>
                         <input type="file" class="ml-3" id="customFile" name="inputImg">
                      </div>
                   </div>
