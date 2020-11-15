@@ -108,35 +108,34 @@
 					</h5>
 					<div class="card-body">
 						<h6 class="card-title">ผู้ใช้มีทั้งหมด 2 ประเภท</h6>
-							<p class="card-text px-2">
-								<b>ผู้ใช้งานทั่วไป&nbsp;&nbsp;:&nbsp;&nbsp;</b>  <?php echo "xx คน - php" ?>
-							</p>
-							<p class="card-text px-2">
-								<b>ผู้ดูแลระบบ&nbsp;&nbsp;:&nbsp;&nbsp;</b>  <?php echo "xx คน - php" ?>
-							</p>
+						<p class="card-text px-2">
+							<b>ผู้ใช้งานทั่วไป&nbsp;&nbsp;:&nbsp;&nbsp;</b>  <?php echo "xx คน - php" ?>
+						</p>
+						<p class="card-text px-2">
+							<b>ผู้ดูแลระบบ&nbsp;&nbsp;:&nbsp;&nbsp;</b>  <?php echo "xx คน - php" ?>
+						</p>
 
-							<hr>
+						<hr>
 
-							<!-- progress bar -->
+						<!-- progress bar -->
+						<!-- all -->
+						<p>ทั้งหมด 2 ประเภท : <?php echo "10" ?></p>
+						<div class="progress progress-all">
+							<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป : <?php echo "7" ?></div>
+							<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">ผู้ดูแลระบบ : <?php echo "3" ?></div>
+						</div>
+						
+						<!-- notebook -->
+						<p>ประเภท &nbsp : &nbsp ผู้ใช้ทั่วไป <?php echo "7" ?></p>
+						<div class="progress">
+							<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
+						</div>
 
-							<!-- all -->
-							<p>ทั้งหมด 2 ประเภท : <?php echo "10" ?></p>
-							<div class="progress progress-all">
-								<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป : <?php echo "7" ?></div>
-								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">ผู้ดูแลระบบ : <?php echo "3" ?></div>
-							</div>
-							
-							<!-- notebook -->
-							<p>ประเภท &nbsp : &nbsp ผู้ใช้ทั่วไป <?php echo "7" ?></p>
-							<div class="progress">
-								<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
-							</div>
-
-							<!-- notebook -->
-							<p>ประเภท &nbsp : &nbsp ผู้ดูแลระบบ <?php echo "3" ?></p>
-							<div class="progress">
-								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ดูแลระบบ" ?></div>
-							</div>
+						<!-- notebook -->
+						<p>ประเภท &nbsp : &nbsp ผู้ดูแลระบบ <?php echo "3" ?></p>
+						<div class="progress">
+							<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ดูแลระบบ" ?></div>
+						</div>
 
 						<!-- button -->
 						<a href="#" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a>
