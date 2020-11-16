@@ -5,9 +5,9 @@
 	session_start();
 	
 		// เช็คสถานะ admin 
-	if ($_SESSION['login_role'] != '2') { // ถ้าไม่ใช่ admin
-		header("location:index.php");
-	} 
+	// if ($_SESSION['login_role'] != '2') { // ถ้าไม่ใช่ admin
+	// 	header("location:index.php");
+	// } 
 	// Query from database
 	$user_query = $db->prepare("SELECT user_id, role_id FROM 2ndshop.tb_users");
 	$user_query->execute();
@@ -109,7 +109,7 @@
 						</div>
 
 						<!-- button -->
-						<a href="#" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a>
+						<!-- <a href="#" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a> -->
 					</div>
 				</div>
 			</div>
@@ -164,7 +164,7 @@
 							<div class="progress">
 								<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countNotebook * (100/$countAllProduct) ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">โน้ตบุ๊ค</div>
 							</div>
-						<a href="#" class="btn btn-primary my-3 w-100">จัดการสินค้า</a>
+						<a href="admin-m-product.php" class="btn btn-primary my-3 w-100">จัดการสินค้า</a>
 					</div>
 				</div>
 			</div>
