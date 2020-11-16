@@ -34,13 +34,12 @@
               if ($_SESSION['login_role'] == '2') {
                 header("refresh:1;admin.php");
               } else {
-                $msg = '<div class="alert alert-danger text-center">username or something error</div>';
-                echo $msg;
+                header("refresh:1;index.php");
               }
           } 
 
       } else {
-          $msg = '<div class="alert alert-danger text-center">username or password wrong</div>';
+          $msg = '<div class="alert alert-danger text-center">username or password is incorrect</div>';
       }
     } catch (PDOException $err) {
       echo $err->getMessage();
