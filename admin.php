@@ -5,9 +5,9 @@
 	session_start();
 	
 		// เช็คสถานะ admin 
-	// if ($_SESSION['login_role'] != '2') { // ถ้าไม่ใช่ admin
-	// 	header("location:index.php");
-	// } 
+	if ($_SESSION['login_role'] != '2') { // ถ้าไม่ใช่ admin
+		header("location:index.php");
+	} 
 	// Query from database
 	$user_query = $db->prepare("SELECT user_id, role_id FROM 2ndshop.tb_users");
 	$user_query->execute();
@@ -109,7 +109,7 @@
 						</div>
 
 						<!-- button -->
-						<!-- <a href="#" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a> -->
+						<a href="#" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a>
 					</div>
 				</div>
 			</div>
