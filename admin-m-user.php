@@ -28,7 +28,7 @@
         <div class="col mb-4">
             <a href="product-add.php" class="btn btn-success">เพิ่มผู้ใช้งาน</a>
         </div>
-		<table class="table table-sm table-bordered table-hover">
+		<table class="table table-sm table-striped table-bordered table-hover">
 			<thead class="bg-primary text-white">
 				<tr>
 					<th scope="col" class="py-2 px-2 text-center">#</th>
@@ -47,8 +47,9 @@
                     $query->execute();
                     $countIndex = 0;
                 ?>
-                <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
 					<!-- fetch data from '$query' then assign data/value to '$row' -->
+                <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
+
                     <tr>
                         <td class="text-center"> <?php echo ++$countIndex ?> </td>
                         <td class="pl-2"> <?php echo "{$row['user_fname']} {$row['user_lname']}"?> </td>
@@ -64,7 +65,8 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>
+					</tr>
+					
                 <?php } ?>
 			</tbody>
 		</table>
