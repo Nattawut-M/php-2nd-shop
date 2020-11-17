@@ -34,14 +34,14 @@
 		<table class="table table-bordered table-hover">
 			<thead class="bg-primary text-white">
 				<tr>
-					<th scope="col-1">#</th>
-					<th scope="col-1">ชื่อสินค้า</th>
-					<th scope="col-1">ประเภท</th>
-					<th scope="col-4">รายละเอียด</th>
-					<th scope="col-1">ราคา</th>
-					<th scope="col-1">เวลาลงขาย</th>
-					<th scope="col-2">รูปภาพ</th>
-					<th scope="col-1">จัดการ</th>
+					<th scope="col">#</th>
+					<th scope="col">ชื่อสินค้า</th>
+					<th scope="col">ประเภท</th>
+					<th scope="col">รายละเอียด</th>
+					<th scope="col">ราคา</th>
+					<th scope="col">เวลาลงขาย</th>
+					<th scope="col">รูปภาพ</th>
+					<th scope="col">จัดการ</th>
 				</tr>
 			</thead>
 			<tbody>
