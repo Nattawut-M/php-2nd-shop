@@ -1,197 +1,174 @@
 <?php
-   require_once('model/connection.php');
-   require_once('views/bootstrap4.php');
-   
-   session_start();
+    require_once('model/connection.php');
+    require_once('views/bootstrap4.php');
+    
+    session_start();
 
-   /* check login */
-   /* 
-   if (!isset($_SESSION['login'])) { 
-      header("location: login.php");
-   }
+    /* check login */
+    /* 
+    if (!isset($_SESSION['login'])) { 
+        header("location: login.php");
+    }
     */
-   // receive request from 'myproduct.php' via button 'edit'
-   if (isset($_REQUEST['update_id'])) {
-      try {
-         $user_id = $_SESSION['login_id'];
-         $update_id = $_REQUEST['update_id'];
-         $query = $db->prepare("SELECT * FROM 2ndshop.tb_product WHERE pd_id = :id");
-         $query->execute([':id' => $update_id]);
-         $row = $query->fetch(PDO::FETCH_ASSOC);
-         // extract($row);
-      } catch (PDOException $err) {
-         echo $err->getMessage();
-      }
-   }
 
-   // update form form 'this' (product-edit.php)
-   if (isset($_REQUEST['btnUpdate'])) {
-      try {
+    // get request 'update_id' from 'admin-m-user.php' via button 'edit'
+    if (isset($_REQUEST['update_id'])) {
+        try {
 
-         $name = $_REQUEST['inputName'];
-         $price = $_REQUEST['inputPrice'];
-         $detail = $_REQUEST['inputDetail'];
-         $type = $_REQUEST['typeProduct'];
+            $update_id = $_REQUEST['update_id'];
+            $query = $db->prepare("SELECT * FROM 2ndshop.tb_users WHERE user_id = :id");
+            $query->execute([':id' => $update_id]);
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            print_r($row);
+        } catch (PDOException $err) {
+            echo $err->getMessage();
+        }
+    }
 
-         $img_name =  $row['pd_img']; // ให้ค่าเริ่มต้นเป็นรูปเดิม
-         $img_type = $_FILES['inputImg']['type'];
-         $img_size = $_FILES['inputImg']['size'];
-         $img_tmp = $_FILES['inputImg']['tmp_name']; // inintial file stored
 
-         $path = "upload/".$img_name; // file destination / new img name
-         $directory ="upload/"; // old directory
+    // update form form 'this' (admin-m-user-edit.php)
+    if (isset($_REQUEST['btnEditSubmit'])) {
 
-         // ถ้ามีการเลือกรูป
-         if (isset($img_name)) { 
-
-            if (file_exists($path)) {
-               move_uploaded_file($img_tmp, 'upload/'.$img_name);
-            }
-         // ถ้าไม่ได้เลือกรูปใหม่ ให้ใช้รูปเดิม
-         } else { 
-            $img_name = $row['pd_img']; 
-         }
-
-         if (!isset($msg)) { // ถ้าไม่มีข้อความ = ไม่มี error
-
-            $query_update = $db->prepare(
-               "UPDATE 2ndshop.tb_product SET 
-               pd_name = :pd_name, 
-               pd_detail = :pd_detail,
-               pd_price = :pd_price,
-               pd_img = :pd_img
-               WHERE pd_id = :pd_id"
-            );
-
-            // if success return True, else Failure return False to $result
-            $result = $query_update->execute([
-               ':pd_name' => $name,
-               ':pd_detail' => $detail,
-               ':pd_price' => $price,
-               ':pd_img' => $img_name,
-               ':pd_id' => $row['pd_id']
-            ]); 
-
-            if ($result) {
-               $updateMsg = '<div class="alert alert-success">อัพเดทสำเร็จ</div>';
-               // echo $updateMsg;
-               header("refresh:1;admin-m-product.php");
+        try {
+            // assign update data to variables
+            $edit_fname = $_POST['inputFname'];
+            $edit_lname = $_POST['inputLname'];
+            $edit_username = $_POST['inputUsername'];
+            $edit_password1 = $_POST['inputPassword1'];
+            $edit_password2 = $_POST['inputPassword2'];
+            $edit_email = $_POST['inputEmail'];
+            
+            // check password and confirm password
+            if ($edit_password1 != $edit_password2) {
+                $msg = '<div class="alert alert-danger text-center">รหัสผ่านไม่ตรงกัน</div>';
             } else {
-               $updateMsg = '<div class="alert alert-danger">มีปัญหา</div>';
-               // echo $updateMsg;
-            }
-         }
 
-         
-      } catch (PDOException $err) {
-         echo $err->getMessage();
-      }
-   }
+                try {
+                    
+                    $query = $db->prepare(
+                    "UPDATE 2ndshop.tb_users SET 
+                        user_fname = :fname, 
+                        user_lname = :lname,
+                        user_username = :username, 
+                        user_password = :password, 
+                        user_email = :email
+                    WHERE 
+                        user_id = :id"
+                    );
+
+                    $result = $query->execute([
+                        ':fname' => $edit_fname, 
+                        ':lname' => $edit_lname,
+                        ':username' => $edit_username,
+                        ':password' => $edit_password2,
+                        ':email' => $edit_email,
+                        ':id' => $_REQUEST['update_id']
+                    ]);
+
+                    if ($result) {
+
+                        // fetch data for show result
+                        $update_id = $_REQUEST['update_id'];
+                        $query = $db->prepare("SELECT * FROM 2ndshop.tb_users WHERE user_id = :id");
+                        $query->execute([':id' => $update_id]);
+                        $row = $query->fetch(PDO::FETCH_ASSOC);
+
+                        $msg = '<div class="alert alert-success text-center">แก้ไขสำเร็จ</div>';
+                        header("refresh:1; admin-m-user.php");
+                    }
+                    
+                } catch (PDOException $err) {
+                echo $err->getMessage();
+            } /* {} try-catch */
+
+        }
+            
+        } catch (PDOException $err) {
+            echo $err->getMessage();
+        }
+    }
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Update Product</title>
-   <link rel="stylesheet" href="css/admin-edit.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit profile</title>
+    <link rel="stylesheet" href="css/register.css">
 </head>
-
 <body>
-<!-- Navbar -->
-   <?php include_once('views/nav-admin.php'); ?>
+    <?php require_once('views/nav.php'); ?>
 
-<!-- section -->
-   <section class="container my-3 py-5" id="section-container">
-      <div class="row"> 
-      <!-- col img -->
-         <div class="col-6 align-self-center" id="col-img">
-            <img src="images/sell.jpg" alt="" class="img-fluid">
-         </div> 
-      <!-- col img end -->
+    <section class="container my-5 py-5">
+        <div class="row"> 
 
-      <!-- col input -->
-         <div class="col-6 pr-5" id="col-register">
-            <?php 
-               if (isset($msg)) {
-                  echo '<div class="alert alert-danger">'. $msg .'</div>';
-               } 
-            
-               if (isset($updateMsg)) {
-                  echo $updateMsg;
-               }
-            ?>
-            <h2 class="mb-4">คุณต้องการลงประกาศขายอะไร?</h2>
+            <div class="col-6 align-self-center" id="col-img">
+            <img src="images/register.jpg" alt="" class="img-fluid">
+            </div> <!-- col-img -->
 
-         <!-- form -->
-            <form action="" method="POST" enctype="multipart/form-data"> 
-            <!-- ชื่อสินค้า -->
-               <div class="form-row mb-3"> 
-                  <div class="col">
-                     <label for="inputName">ชื่อสินค้า</label>
-                     <input type="text" class="form-control" name="inputName" id="inputName" value="<?php echo $row['pd_name'] ?>">
-                  </div>
-               </div>
-            <!-- ราคา และ ประเภทสินค้า -->
-               <div class="form-row mb-3">
-                  <div class="col-6">
-                     <label for="inputPrice">ราคา</label>
-                     <input type="number" class="form-control" name="inputPrice" id="inputPrice" value="<?php echo $row['pd_price'] ?>">
-                  </div>
-                  <div class="col-6">
-                     <label for="typeProduct">ประเภทของสินค้า</label>
-                     <select class="custom-select" name="typeProduct" id="typeProduct">
+            <div class="col-6 pr-5" id="col-register">
+                <h1><strong>แก้ไขโปรไฟล์</strong></h1>
 
-                        <?php if ($row['type_id'] == '1') : ?>
-                           <option value="1" selected>Vehicle (ยานพาหนะ)</option>
-                           <option value="2" >Smartphone (สมาร์ทโฟน)</option>
-                           <option value="3" >Notebook (โน้ตบุ๊ค)</option>
-                        <?php elseif ($row['type_id'] == '2') : ?>
-                           <option value="1" >Vehicle (ยานพาหนะ)</option>
-                           <option value="2" selected>Smartphone (สมาร์ทโฟน)</option>
-                           <option value="3" >Notebook (โน้ตบุ๊ค)</option>
-                        <?php elseif ($row['type_id'] == '3') : ?>
-                           <option value="1" >Vehicle (ยานพาหนะ)</option>
-                           <option value="2" >Smartphone (สมาร์ทโฟน)</option>
-                           <option value="3" selected>Notebook (โน้ตบุ๊ค)</option>
-                        <?php endif ?>
-                           
-                     </select>
-                  </div>
-               </div>
+                <!-- form register -->
+                <form action="" method="post"> 
+                <div class="form-row"> 
+                    <div class="col-6"> <!-- first name -->
+                        <label for="inputFname">First name</label>
+                        <input type="text" class="form-control" name="inputFname" id="inputFname" placeholder="First Name" required value="<?php echo $row['user_fname'] ?>">
+                    </div>
+                    <div class="col-6"> <!-- last name -->
+                        <label for="inputLname">Last name</label>
+                        <input type="text" class="form-control" name="inputLname" id="inputLname" placeholder="Last Name" required value="<?php echo $row['user_lname'] ?>">
+                    </div>
+                </div> <!-- form-row  -->
 
-            <!-- รูปสินค้า -->
-               <div class="form-row mt-4 mb-3">
-                  <div class="col">
-                     <div class="custom-file mb-3">
-                        <label for="" class="mr-5">เลือกรูปสินค้า *ข้ามขั้นตอนนี้ หากไม่ต้องการเปลี่ยนรูปสินค้า*</label>
-                        <input type="file" class="ml-3" id="customFile" name="inputImg">
-                     </div>
-                  </div>
-               </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="inputUsername">Username</label>
+                        <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required value="<?php echo $row['user_username'] ?>">
+                    </div>
+                </div>
+                
+                <div class="form-row"> 
+                    <div class="col-6"> <!-- first name -->
+                        <label for="inputPassword1">Password</label>
+                        <input type="text" class="form-control" name="inputPassword1" id="inputPassword1" placeholder="Password" required value="<?php echo $row['user_password'] ?>">
+                    </div>
+                    <div class="col-6"> <!-- last name -->
+                        <label for="inputPassword2">Confirm Password</label>
+                        <input type="text" class="form-control" name="inputPassword2" id="inputPassword2" placeholder="Confirm Password" required value="<?php echo $row['user_password'] ?>">
+                    </div>
+                </div> <!-- form-row  -->
 
-            <!-- รายละเอียดสินค้า -->
-               <div class="form-row mb-3">
-                  <div class="col">
-                     <label for="inputDetail">รายละเอียดสินค้า</label>
-                     <textarea name="inputDetail" id="inputDetail" class="form-control" placeholder="รายละเอียดสินค้า" rows="3" required><?php echo $row['pd_detail'] ?></textarea>
-                  </div>
-               </div>
-               <div class="row mt-2 d-flex justify-content-center">
-                     <button type="submit" class="btn btn-warning mx-2 w-25" name="btnUpdate">อัพเดท</button>
-                     <a href="admin-m-product.php" type="submit" class="btn btn-danger mx-2 w-25">ยกเลิก</a>
-               </div>
-               
-               
-            </form> 
-         <!-- form end -->
-         </div>
-         <!-- col input end -->
-      </div>
-   <!-- row -->
-   </section>
-<!-- end section -->
+                <div class="form-row">
+                    <div class="col"> <!-- email -->
+                        <label for="inputEmail">Email</label>
+                        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required value="<?php echo $row['user_email']  ?>">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <button type="submit" name="btnEditSubmit" class="btn btn-primary text-white mt-3 w-100">บันทึก</button>
+                    </div>
+                    <div class="col">
+                        <button type="reset" name="btnEditReset" class="btn btn-warning text-white mt-3 w-100" value="reset">รีเซ็ตแก้ไข</button>
+                    </div>
+                </div>
+                <div class="form-row mt-5">
+                    <div class="col">
+                        <a href="admin-m-user.php" class="btn btn-danger text-white w-100">ยกเลิก</a>
+                    </div>
+                </div>
+                </form> <!-- form -->
+
+                <?php if (isset($msg)) {
+                    echo $msg;
+                } ?>
+            </div> <!-- col-register -->
+        </div> <!-- row (img+register) -->
+    </section>
+    
 </body>
 </html>
