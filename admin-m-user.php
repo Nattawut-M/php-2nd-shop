@@ -26,7 +26,7 @@
     <section class="container my-4">
         <h1>User Management</h1>
         <div class="col mb-4">
-            <a href="product-add.php" class="btn btn-success">เพิ่มผู้ใช้งาน</a>
+            <a href="admin-m-user-add.php" class="btn btn-success">เพิ่มผู้ใช้งาน</a>
         </div>
 		<table class="table table-sm table-striped table-bordered table-hover">
 			<thead class="bg-primary text-white">

@@ -52,7 +52,11 @@ session_start();
 
             if ($result) {
                $query_msg = "ลงขายสินค้าสำเร็จ";
-               header("refresh:1; myproduct.php");
+               if ($_SESSION['login_role'] == '2') {
+                  header("refresh:1;admin-m-product.php");
+               } else {
+                  header("refresh:1; myproduct.php");
+               }
             }
          }
 
