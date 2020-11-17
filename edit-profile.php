@@ -6,16 +6,8 @@
    if (!isset($_SESSION['login'])) {
       header("location:login.php");
    }
-   $_SESSION['login'];
-   $id = $_SESSION['login_id'];
-   $fname = $_SESSION['login_fname'];
-   $lname = $_SESSION['login_lname'];
-   $username = $_SESSION['login_username'];
-   $password = $_SESSION['login_password'];
-   $email = $_SESSION['login_email'];
-   $role = $_SESSION['login_role'];
 
-
+   // get(POST) data from edit form html below
    if (isset($_POST['btnEditSubmit'])) {
       $edit_fname = $_POST['inputFname'];
       $edit_lname = $_POST['inputLname'];
@@ -82,36 +74,36 @@
                <div class="form-row"> 
                   <div class="col-6"> <!-- first name -->
                      <label for="inputFname">First name</label>
-                     <input type="text" class="form-control" name="inputFname" id="inputFname" placeholder="First Name" required value="<?php echo $fname ?>">
+                     <input type="text" class="form-control" name="inputFname" id="inputFname" placeholder="First Name" required value="<?php echo $_SESSION['login_fname'] ?>">
                   </div>
                   <div class="col-6"> <!-- last name -->
                      <label for="inputLname">Last name</label>
-                     <input type="text" class="form-control" name="inputLname" id="inputLname" placeholder="Last Name" required value="<?php echo $lname  ?>">
+                     <input type="text" class="form-control" name="inputLname" id="inputLname" placeholder="Last Name" required value="<?php echo $_SESSION['login_lname'] ?>">
                   </div>
                </div> <!-- form-row  -->
 
                <div class="form-row">
                   <div class="col">
                      <label for="inputUsername">Username</label>
-                     <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required value="<?php echo $username ?>">
+                     <input type="text" name="inputUsername" id="inputUsername" class="form-control" placeholder="Username" required value="<?php echo $_SESSION['login_username'] ?>">
                   </div>
                </div>
                
                <div class="form-row"> 
                   <div class="col-6"> <!-- first name -->
                      <label for="inputPassword1">Password</label>
-                     <input type="text" class="form-control" name="inputPassword1" id="inputPassword1" placeholder="Password" required value="<?php echo $password ?>">
+                     <input type="text" class="form-control" name="inputPassword1" id="inputPassword1" placeholder="Password" required value="<?php echo $_SESSION['login_password'] ?>">
                   </div>
                   <div class="col-6"> <!-- last name -->
                      <label for="inputPassword2">Confirm Password</label>
-                     <input type="text" class="form-control" name="inputPassword2" id="inputPassword2" placeholder="Confirm Password" required value="<?php echo $password ?>">
+                     <input type="text" class="form-control" name="inputPassword2" id="inputPassword2" placeholder="Confirm Password" required value="<?php echo $_SESSION['login_password'] ?>">
                   </div>
                </div> <!-- form-row  -->
 
                <div class="form-row">
                   <div class="col"> <!-- email -->
                      <label for="inputEmail">Email</label>
-                     <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required value="<?php echo $email  ?>">
+                     <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required value="<?php echo $_SESSION['login_email']  ?>">
                   </div>
                </div>
                <div class="form-row">
