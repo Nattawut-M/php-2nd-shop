@@ -33,32 +33,33 @@
 				<tr>
 					<th scope="col" class="py-2 px-2 text-center">#</th>
 					<th scope="col" class="py-2 px-2">ชื่อผู้ใช้</th>
-					<th scope="col" class="py-2 px-2">ชื่อ username</th>
-					<th scope="col" class="py-2 px-2">รหัสผ่าน</th>
-					<th scope="col" class="py-2 px-2">Mail</th>
-					<th scope="col" class="py-2 px-2">ประเภท</th>
-					<th scope="col" class="py-2 px-2 text-center">จัดการ</th>
+					<th scope="col" class="py-2 px-2">username</th>
+					<th scope="col" class="py-2 px-2">password</th>
+					<th scope="col" class="py-2 px-2">mail</th>
+					<th scope="col" class="py-2 text-center">ประเภท</th>
+					<th scope="col" class="py-2 text-center">จัดการ</th>
 				</tr>
 			</thead>
 			<tbody>
-                <?php 
+				<?php 
+					/* query data from database */
                     $query = $db->prepare("SELECT * FROM 2ndshop.tb_users ORDER BY user_id DESC"); 
                     $query->execute();
                     $countIndex = 0;
                 ?>
-
                 <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
+					<!-- fetch data from '$query' then assign data/value to '$row' -->
                     <tr>
-                        <td class="text-center"><?php echo ++$countIndex ?></td>
-                        <td class=""><?php echo "{$row['user_fname']} {$row['user_lname']}"?></td>
-                        <td class=""><?php echo $row['user_username'] ?></td>
-                        <td class=""><?php echo $row['user_password'] ?></td>
-                        <td class=""><?php echo $row['user_email'] ?></td>
-                        <td class=""><?php echo ($row['role_id'] == '2') ? "admin" : "user" ?></td> <!-- if 'role_id' == 2 will echo 'admin' else echo 'user' -->
+                        <td class="text-center"> <?php echo ++$countIndex ?> </td>
+                        <td class="pl-2"> <?php echo "{$row['user_fname']} {$row['user_lname']}"?> </td>
+                        <td class="pl-2"> <?php echo $row['user_username'] ?> </td>
+                        <td class="pl-2"> <?php echo $row['user_password'] ?> </td>
+                        <td class="pl-2"> <?php echo $row['user_email'] ?> </td>
+                        <td class="text-center"> <?php echo ($row['role_id'] == '2') ? "admin" : "user" ?> </td> <!-- if 'role_id' == 2 will echo 'admin' else echo 'user' -->
                         <td class="mx-1">
                             <div class="row ">
-                                <div class="col d-flex justify-content-around">
-									<a href="admin-m-product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
+                                <div class="col d-flex justify-content-center">
+									<a href="admin-m-product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-warning mr-2">Edit</a>
 									<a href="admin-m-product-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-danger">delete</a>
                                 </div>
                             </div>
