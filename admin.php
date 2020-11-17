@@ -109,7 +109,7 @@
 						</div>
 
 						<!-- button -->
-						<a href="#" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a>
+						<a href="admin-m-user.php" class="btn btn-primary my-3 w-100">จัดการผู้ใช้ระบบ</a>
 					</div>
 				</div>
 			</div>
