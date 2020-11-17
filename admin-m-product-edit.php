@@ -1,13 +1,15 @@
 <?php
    require_once('model/connection.php');
    require_once('views/bootstrap4.php');
+   
    session_start();
 
    /* check login */
+   /* 
    if (!isset($_SESSION['login'])) { 
       header("location: login.php");
    }
-
+    */
    // receive request from 'myproduct.php' via button 'edit'
    if (isset($_REQUEST['update_id'])) {
       try {
@@ -73,7 +75,7 @@
             if ($result) {
                $updateMsg = '<div class="alert alert-success">อัพเดทสำเร็จ</div>';
                // echo $updateMsg;
-               header("refresh:1;myproduct.php");
+               header("refresh:1;admin-m-product.php");
             } else {
                $updateMsg = '<div class="alert alert-danger">มีปัญหา</div>';
                // echo $updateMsg;
@@ -94,15 +96,15 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Update Product</title>
-   <link rel="stylesheet" href="css/register.css">
+   <link rel="stylesheet" href="css/admin-edit.css">
 </head>
 
 <body>
 <!-- Navbar -->
-   <?php require_once('views/nav.php'); ?>
+   <?php include_once('views/nav-admin.php'); ?>
 
 <!-- section -->
-   <section class="container my-3 py-5">
+   <section class="container my-3 py-5" id="section-container">
       <div class="row"> 
       <!-- col img -->
          <div class="col-6 align-self-center" id="col-img">
@@ -179,7 +181,7 @@
                </div>
                <div class="row mt-2 d-flex justify-content-center">
                      <button type="submit" class="btn btn-warning mx-2 w-25" name="btnUpdate">อัพเดท</button>
-                     <a href="myproduct.php" type="submit" class="btn btn-danger mx-2 w-25">ยกเลิก</a>
+                     <a href="admin-m-product.php" type="submit" class="btn btn-danger mx-2 w-25">ยกเลิก</a>
                </div>
                
                
