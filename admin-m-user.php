@@ -3,25 +3,12 @@
 	require_once('views/bootstrap4.php');
 
 	session_start();
-	
-	// เช็คสถานะ login
-	if (!isset($_SESSION['login'])) {
-		header("location:login.php");
-	}
-	
+
 		// เช็คสถานะ admin 
-	if ($_SESSION['login_role'] != '2') { // ถ้าไม่ใช่ admin
-		
-			// ถ้ายังไม่ได้ login ให้ redirect ไปที่หน้า login
-		if (!isset($_SESSION['login'])) { 
-			header("location:login.php");
-		
-			// ถ้า login แล้วให้ redirect ไปที่หน้า index
-		} else { 
-			header("location:admin-panel.php");
-		}
-		
-	} /* {if-else} เช็คสถานะ login */
+	if ($_SESSION['login_role'] != '2') { // ถ้าไม่ใช่สถานะ admin
+		header("refresh:0;login.php");	
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +20,54 @@
 </head>
 <body>
     <!-- Navbar -->
-    <?php require_once('views/nav-admin.php') ?>
+	<?php require_once('views/nav-admin.php') ?>
+	
+	<!-- Section -->
+    <section class="container my-4">
+        <h1>User Management</h1>
+        <div class="col mb-2">
+            <a href="product-add.php" class="btn btn-success">เพิ่มสินค้า</a>
+        </div>
+		<table class="table table-bordered table-hover">
+			<thead class="bg-primary text-white">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">ชื่อผู้ใช้</th>
+					<th scope="col">ชื่อ username</th>
+					<th scope="col">รหัสผ่าน</th>
+					<th scope="col">Mail</th>
+					<th scope="col">ประเภท</th>
+					<th scope="col">จัดการ</th>
+				</tr>
+			</thead>
+			<tbody>
+                <?php 
+                    $query = $db->prepare("SELECT * FROM 2ndshop.tb_users ORDER BY user_id DESC"); 
+                    $query->execute();
+                    $countIndex = 0;
+                ?>
+
+                <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td class=""><?php echo ++$countIndex ?></td>
+                        <td class=""><?php echo "{$row['user_fname']} {$row['user_lname']}"?></td>
+                        <td class=""><?php echo $row['user_username'] ?></td>
+                        <td class=""><?php echo $row['user_password'] ?></td>
+                        <td class=""><?php echo $row['user_email'] ?></td>
+                        <td class=""><?php echo ($row['role_id'] == '2') ? "admin" : "user" ?></td>
+                        <td class="mx-1">
+                            <div class="row ">
+                                <div class="col d-flex justify-content-around">
+                                <a href="admin-m-product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-warning mr-1">Edit</a>
+                                <a href="admin-m-product-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-danger">delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+			</tbody>
+		</table>
+        
+    </section>
 </body>
 </html>
