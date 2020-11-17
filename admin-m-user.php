@@ -54,7 +54,7 @@
                         <td class=""><?php echo $row['user_username'] ?></td>
                         <td class=""><?php echo $row['user_password'] ?></td>
                         <td class=""><?php echo $row['user_email'] ?></td>
-                        <td class=""><?php echo ($row['role_id'] == '2') ? "admin" : "user" ?></td>
+                        <td class=""><?php echo ($row['role_id'] == '2') ? "admin" : "user" ?></td> <!-- if 'role_id' == 2 will echo 'admin' else echo 'user' -->
                         <td class="mx-1">
                             <div class="row ">
                                 <div class="col d-flex justify-content-around">
