@@ -61,8 +61,9 @@
                         <td class="mx-1">
                             <div class="row ">
                                 <div class="col d-flex justify-content-center">
-									<a href="admin-m-user-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-warning mr-2">Edit</a>
-									<a href="admin-m-user-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-danger">delete</a>
+									<!-- ส่งค่าไปที่ไฟล์ พร้อม REQUEST ชื่อ 'update_id' ที่มีค่าเป็นค่าภายใน $row['pd_id'] -->
+									<a href="admin-m-user-edit.php?update_id=<?php echo $row['user_id'] ?>" class="btn btn-sm btn-warning mr-2">Edit</a>
+									<a href="admin-m-user-delete.php?delete_id=<?php echo $row['user_id'] ?>" class="btn btn-sm btn-danger">delete</a>
                                 </div>
                             </div>
                         </td>
