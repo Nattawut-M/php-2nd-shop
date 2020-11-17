@@ -99,13 +99,13 @@
 						<!-- notebook -->
 						<p>ประเภท &nbsp : &nbsp ผู้ใช้ทั่วไป <?php echo $countUser ?> คน</p>
 						<div class="progress">
-							<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "70" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
+							<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countUser * (100/$countAllUsers) ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
 						</div>
 
 						<!-- notebook -->
 						<p>ประเภท &nbsp : &nbsp ผู้ดูแลระบบ <?php echo $countAdmin ?> คน</p>
 						<div class="progress">
-							<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo "30" ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ดูแลระบบ" ?></div>
+							<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countAdmin * (100/$countAllUsers) ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ดูแลระบบ" ?></div>
 						</div>
 
 						<!-- button -->
