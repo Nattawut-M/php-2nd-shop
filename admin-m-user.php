@@ -46,8 +46,9 @@
                     $query = $db->prepare("SELECT * FROM 2ndshop.tb_users ORDER BY user_id DESC"); 
                     $query->execute();
                     $countIndex = 0;
-                ?>
-					<!-- fetch data from '$query' then assign data/value to '$row' -->
+				?>
+				
+				<!-- fetch data from '$query' then assign data/value to '$row' -->
                 <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
 
                     <tr>
