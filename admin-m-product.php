@@ -63,8 +63,8 @@
                         <td class="mx-1">
                             <div class="row ">
                                 <div class="col d-flex justify-content-around">
-                                <a href="product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-warning mr-1">Edit</a>
-                                <a href="product-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-danger">delete</a>
+                                <a href="admin-m-product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-warning mr-1">Edit</a>
+                                <a href="admin-m-product-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-danger">delete</a>
                                 </div>
                             </div>
                         </td>
