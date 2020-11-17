@@ -6,27 +6,20 @@
    if (!isset($_SESSION['login'])) {
       header("location:login.php");
    }
-   $uid = $_SESSION['login_id'];
-   $ufname = $_SESSION['login_fname'];
-   $ulname = $_SESSION['login_lname'];
-   $uusername = $_SESSION['login_username'];
-   $upassword = $_SESSION['login_password'];
-   $uemail = $_SESSION['login_email'];
-   $urole = $_SESSION['login_role'];
 
    $query = $db->prepare("SELECT * FROM 2ndshop.tb_users WHERE user_id = :id");
    $query->execute([':id'=> $_SESSION['login_id']]);
    $row = $query->fetch(PDO::FETCH_ASSOC);
 
    if ($query) {
-      // print_r($row);
-      $_SESSION['login_id'] = $row['user_id'];
-      $_SESSION['login_fname'] = $row['user_fname'];
-      $_SESSION['login_lname'] = $row['user_lname'];
-      $_SESSION['login_username'] = $row['user_username'];
-      $_SESSION['login_password'] = $row['user_password'];
-      $_SESSION['login_email'] = $row['user_email'];
-      $_SESSION['login_role'] = $row['user_role'];
+      
+      $uid = $row['user_id'];
+      $ufname = $row['user_fname'];
+      $ulname = $row['user_lname'];
+      $uusername = $row['user_username'];
+      $upassword = $row['user_password'];
+      $uemail = $row['user_email'];
+      $urole = $row['user_role'];
 
    } else {
       echo "error";
