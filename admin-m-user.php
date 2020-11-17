@@ -25,10 +25,10 @@
 	<!-- Section -->
     <section class="container my-4">
         <h1>User Management</h1>
-        <div class="col mb-2">
-            <a href="product-add.php" class="btn btn-success">เพิ่มสินค้า</a>
+        <div class="col mb-4">
+            <a href="product-add.php" class="btn btn-success">เพิ่มผู้ใช้งาน</a>
         </div>
-		<table class="table table-bordered table-hover">
+		<table class="table table-sm table-bordered table-hover">
 			<thead class="bg-primary text-white">
 				<tr>
 					<th scope="col">#</th>
@@ -58,8 +58,8 @@
                         <td class="mx-1">
                             <div class="row ">
                                 <div class="col d-flex justify-content-around">
-                                <a href="admin-m-product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-warning mr-1">Edit</a>
-                                <a href="admin-m-product-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-danger">delete</a>
+                                <a href="admin-m-product-edit.php?update_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-warning mr-1">Edit</a>
+                                <a href="admin-m-product-delete.php?delete_id=<?php echo $row['pd_id'] ?>" class="btn btn-sm btn-danger">delete</a>
                                 </div>
                             </div>
                         </td>
