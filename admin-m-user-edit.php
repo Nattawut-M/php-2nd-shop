@@ -15,11 +15,13 @@
     if (isset($_REQUEST['update_id'])) {
         try {
 
+            // fetch data from database then show on <input> form
             $update_id = $_REQUEST['update_id'];
             $query = $db->prepare("SELECT * FROM 2ndshop.tb_users WHERE user_id = :id");
             $query->execute([':id' => $update_id]);
             $row = $query->fetch(PDO::FETCH_ASSOC);
             print_r($row);
+
         } catch (PDOException $err) {
             echo $err->getMessage();
         }
@@ -37,7 +39,7 @@
             $edit_password1 = $_POST['inputPassword1'];
             $edit_password2 = $_POST['inputPassword2'];
             $edit_email = $_POST['inputEmail'];
-            
+            $edit_role = $_POST['roleUser'];
             // check password and confirm password
             if ($edit_password1 != $edit_password2) {
                 $msg = '<div class="alert alert-danger text-center">รหัสผ่านไม่ตรงกัน</div>';
@@ -51,7 +53,8 @@
                         user_lname = :lname,
                         user_username = :username, 
                         user_password = :password, 
-                        user_email = :email
+                        user_email = :email,
+                        role_id = :edit_role
                     WHERE 
                         user_id = :id"
                     );
@@ -62,6 +65,7 @@
                         ':username' => $edit_username,
                         ':password' => $edit_password2,
                         ':email' => $edit_email,
+                        ':edit_role' => $edit_role,
                         ':id' => $_REQUEST['update_id']
                     ]);
 
@@ -148,6 +152,16 @@
                         <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="E-mail" required value="<?php echo $row['user_email']  ?>">
                     </div>
                 </div>
+
+
+				<div class="form-row">
+					<label for="roleUser">ประเภทของผู้ใช้</label>
+					<select class="custom-select" name="roleUser" id="roleUser">
+						<option value="1" <?php if ($row['role_id'] == '1') { echo "selected"; } ?> >User (ผู้ใช้ทั่วไป)</option>
+						<option value="2" <?php if ($row['role_id'] == '2') { echo "selected"; } ?> >Admin (ผู้ดูแลระบบ)</option>
+					</select>
+                </div>
+                
                 <div class="form-row">
                     <div class="col">
                         <button type="submit" name="btnEditSubmit" class="btn btn-primary text-white mt-3 w-100">บันทึก</button>
