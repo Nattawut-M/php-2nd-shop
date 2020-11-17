@@ -31,13 +31,13 @@
 		<table class="table table-sm table-bordered table-hover">
 			<thead class="bg-primary text-white">
 				<tr>
-					<th scope="col">#</th>
-					<th scope="col">ชื่อผู้ใช้</th>
-					<th scope="col">ชื่อ username</th>
-					<th scope="col">รหัสผ่าน</th>
-					<th scope="col">Mail</th>
-					<th scope="col">ประเภท</th>
-					<th scope="col">จัดการ</th>
+					<th scope="col" class="py-2 px-2 text-center">#</th>
+					<th scope="col" class="py-2 px-2">ชื่อผู้ใช้</th>
+					<th scope="col" class="py-2 px-2">ชื่อ username</th>
+					<th scope="col" class="py-2 px-2">รหัสผ่าน</th>
+					<th scope="col" class="py-2 px-2">Mail</th>
+					<th scope="col" class="py-2 px-2">ประเภท</th>
+					<th scope="col" class="py-2 px-2 text-center">จัดการ</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +49,7 @@
 
                 <?php while($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
                     <tr>
-                        <td class=""><?php echo ++$countIndex ?></td>
+                        <td class="text-center"><?php echo ++$countIndex ?></td>
                         <td class=""><?php echo "{$row['user_fname']} {$row['user_lname']}"?></td>
                         <td class=""><?php echo $row['user_username'] ?></td>
                         <td class=""><?php echo $row['user_password'] ?></td>
