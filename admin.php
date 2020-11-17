@@ -92,14 +92,14 @@
 						<!-- all -->
 						<p>ทั้งหมด 2 ประเภท</p>
 						<div class="progress progress-all">
-							<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countUser * (100/$countAllUsers) ?>%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป : <?php echo $countUser ?></div>
+							<div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countUser * (100/$countAllUsers) ?>%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">ผู้ใช้ทั่วไป : <?php echo $countUser ?></div>
 							<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countAdmin * (100/$countAllUsers) ?>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">ผู้ดูแลระบบ : <?php echo $countAdmin ?></div>
 						</div>
 						
 						<!-- notebook -->
 						<p>ประเภท &nbsp : &nbsp ผู้ใช้ทั่วไป <?php echo $countUser ?> คน</p>
 						<div class="progress">
-							<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countUser * (100/$countAllUsers) ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
+							<div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: <?php echo $countUser * (100/$countAllUsers) ?>%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"><?php echo "ผู้ใช้ทั่วไป" ?></div>
 						</div>
 
 						<!-- notebook -->
